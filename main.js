@@ -30,6 +30,6 @@ function getPost() {
 function showNewPost() {
 	const post = getPost();
 	$('#post-title').text(post.title);
-	$('#post-thumbnail').attr('src', post.thumbnail);
+	if(post.thumbnail != 'self') $('#post-thumbnail').attr('src', post.thumbnail);
 	console.log(post);
 }
