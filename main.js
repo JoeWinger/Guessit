@@ -28,5 +28,8 @@ function getPost() {
 }
 
 function showNewPost() {
-	$('#post-title').text(getPost().title);
+	const post = getPost();
+	$('#post-title').text(post.title);
+	$('#post-thumbnail').attr('src', post.thumbnail);
+	console.log(post);
 }
