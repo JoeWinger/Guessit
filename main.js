@@ -7,6 +7,8 @@ let API_URL = buildURL(DEFAULT_SUBS).concat("/hot.json?t=day&limit=" + DEFAULT_S
 
 var USABLE_POSTS = {};
 
+var CURRENT_POST;
+
 function buildURL(subList) {
 	let url = 'https://i.reddit.com/r/';
 	for(let i = 0; i < subList.length; i++) {
@@ -24,12 +26,20 @@ function getPost() {
 	let r = Math.floor(Math.random() * USABLE_POSTS.length);
 	let post = USABLE_POSTS[r];
 	USABLE_POSTS.splice(r, 1);
+	CURRENT_POST = post.data;
 	return post.data;
 }
 
 function showNewPost() {
 	const post = getPost();
 	$('#post-title').text(post.title);
-	if(post.thumbnail != 'self') $('#post-thumbnail').attr('src', post.thumbnail);
+	if(post.thumbnail != 'self' && post.thumbnail != 'default') $('#post-thumbnail').attr('src', post.thumbnail);
 	console.log(post);
 }
+
+$('#btn-guess').click(() => {
+	if(CURRENT_POST.subreddit.toLowerCase() == $('#guess').val().toLowerCase()) {
+		showNewPost();
+	} else {
+	}
+});
