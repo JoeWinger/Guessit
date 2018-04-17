@@ -33,3 +33,19 @@ body,
     vertical-align: top;
     margin: 0  15px 0 0;
 }
+
+#guess-area {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    width: 40%;
+    margin: 25px;
+}
+#guess, #btn-guess {
+    padding: 15px;
+    font-size: 1em;
+}
+#guess {
+    width: 100%;
+}
