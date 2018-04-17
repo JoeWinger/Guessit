@@ -34,12 +34,30 @@ function showNewPost() {
 	const post = getPost();
 	$('#post-title').text(post.title);
 	if(post.thumbnail != 'self' && post.thumbnail != 'default') $('#post-thumbnail').attr('src', post.thumbnail);
+	$('#post-author').text('/u/' + post.author);
+	$('#post-comments').text(post.num_comments + ' comments');
+	$('#post-updown').text(post.ups + '/' + post.downs);
 	console.log(post);
 }
 
 $('#btn-guess').click(() => {
 	if(CURRENT_POST.subreddit.toLowerCase() == $('#guess').val().toLowerCase()) {
+		$('#guess').removeClass('incorrect').addClass('correct');
 		showNewPost();
 	} else {
+		$('#guess').removeClass('correct').addClass('incorrect');
 	}
+
+	$('#guess').val('');
 });
+
+$("#guess").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#btn-guess").click();
+    }
+});
+
+	$('#guess').autocomplete({
+		hints: DEFAULT_SUBS,
+		buttonText: "Guuess"
+	});
