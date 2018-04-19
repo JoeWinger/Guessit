@@ -9,6 +9,9 @@ var USABLE_POSTS = {};
 
 var CURRENT_POST;
 
+var points = 0;
+var wrongs = 0;
+
 function buildURL(subList) {
 	let url = 'https://i.reddit.com/r/';
 	for(let i = 0; i < subList.length; i++) {
@@ -34,18 +37,27 @@ function showNewPost() {
 	const post = getPost();
 	$('#post-title').text(post.title);
 	if(post.thumbnail != 'self' && post.thumbnail != 'default') $('#post-thumbnail').attr('src', post.thumbnail);
+	else $('#post-thumbnail').attr('src', '');
 	$('#post-author').text('/u/' + post.author);
 	$('#post-comments').text(post.num_comments + ' comments');
 	$('#post-updown').text(post.ups + '/' + post.downs);
-	console.log(post);
+	$('#points').text(points);
+	//console.log(post);
 }
 
 $('#btn-guess').click(() => {
 	if(CURRENT_POST.subreddit.toLowerCase() == $('#guess').val().toLowerCase()) {
-		$('#guess').removeClass('incorrect').addClass('correct');
+		$('#guess').removeClass('incorrect').removeClass('correct').addClass('correct');
+		points++;
+		wrongs = 0;
 		showNewPost();
 	} else {
-		$('#guess').removeClass('correct').addClass('incorrect');
+		$('#guess').removeClass('correct').removeClass('incorrect').addClass('incorrect');
+		points--;
+		$('#points').text(points);
+		wrongs++;
+		if(wrongs == 3) {wrongs = 0; showNewPost();}
+
 	}
 
 	$('#guess').val('');

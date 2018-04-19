@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Guessit</title>
+	<title>Guuess</title>
 	<link rel='stylesheet' href='main.css'>
 	<script src='jquery.min.js'></script>
 	<link rel='stylesheet' href='autocomplete.min.css' type='text/css'>
@@ -8,8 +8,11 @@
 </head>
 <body>
 	<div id='wrapper'>
+		<h1 style='margin-bottom: 0.5rem'>Guuess</h1>
+		<p style="margin-top: 0">Guess the subreddit!</p>
+		<br><br><br>
 		<div id='post'>
-			<img id='post-thumbnail'></img>
+			<img id='post-thumbnail' alt="Thumbnail"></img>
 			<span id='post-title'></span>
 			<div id="post-info">
 				<span id='post-author'></span>
@@ -19,6 +22,8 @@
 				<span id="post-updown"></span>
 			</div>
 		</div>
+		<br>
+		<div id="points-label">Points: <span id='points'>0</span></div>
 
 		<div id="guess-area">
 			<input id='guess' type='text'>
