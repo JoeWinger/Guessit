@@ -5,6 +5,15 @@ var DEFAULT_SUBS = ['art', 'askreddit', 'aww', 'books', 'earthporn', 'food',
 
 let API_URL = buildURL(DEFAULT_SUBS).concat("/hot.json?t=day&limit=" + DEFAULT_SUBS.length*10);
 
+buildAutocomplete();
+function buildAutocomplete() {
+	let o = '';
+	for(let i = 0; i < DEFAULT_SUBS.length; i++) {
+		o += '<option value="' + DEFAULT_SUBS[i] + '" />';
+	}
+	$('#sublist').html(o);
+}
+
 var USABLE_POSTS = {};
 
 var CURRENT_POST;
@@ -30,6 +39,7 @@ function getPost() {
 	let post = USABLE_POSTS[r];
 	USABLE_POSTS.splice(r, 1);
 	CURRENT_POST = post.data;
+	console.log(post.data);
 	return post.data;
 }
 
@@ -40,7 +50,8 @@ function showNewPost() {
 	else $('#post-thumbnail').attr('src', '');
 	$('#post-author').text('/u/' + post.author);
 	$('#post-comments').text(post.num_comments + ' comments');
-	$('#post-updown').text(post.ups + '/' + post.downs);
+	if(post.domain.startsWith('self.')) $('#post-link').text('self');
+	else $('#post-link').text(post.domain);
 	$('#points').text(points);
 	//console.log(post);
 }

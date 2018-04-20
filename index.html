@@ -12,22 +12,23 @@
 		<p style="margin-top: 0">Guess the subreddit!</p>
 		<br><br><br>
 		<div id='post'>
-			<img id='post-thumbnail' alt="Thumbnail"></img>
+			<img id='post-thumbnail' alt='Loading...' onerror='this.src="nothumb.png"'></img>
 			<span id='post-title'></span>
 			<div id="post-info">
 				<span id='post-author'></span>
 				&nbsp;&nbsp;&nbsp;
-				<span id='post-comments'></span>
+				<span id='post-link'></span>
 				&nbsp;&nbsp;&nbsp;
-				<span id="post-updown"></span>
+				<span id='post-comments'></span>
 			</div>
 		</div>
 		<div id="guess-area">
-			<input id='guess' type='text'>
+			<input id='guess' type='text' list='sublist'>
 			<button id='btn-guess'>Guuess</button>
 		</div>
 		<br><br>
-		<div id="points-label">Points: <span id='points'>0</span></div>
+		<div id='points-label'>Points: <span id='points'>0</span></div>
+		<datalist id='sublist'></datalist>
 	</div>
 	<script src='main.js'></script>
 	

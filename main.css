@@ -41,7 +41,7 @@ body,
     float: left;
     border: 0;
     outline: 0;
-    background: url('nothumb.png');
+    background: #ddd;
     text-align: center;
     font-size: 0.8rem;
 }
