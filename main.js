@@ -79,8 +79,3 @@ $("#guess").keyup(function(event) {
         $("#btn-guess").click();
     }
 });
-
-	$('#guess').autocomplete({
-		hints: DEFAULT_SUBS,
-		buttonText: "Guuess"
-	});
