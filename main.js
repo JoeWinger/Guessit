@@ -5,13 +5,13 @@ var DEFAULT_SUBS = ['art', 'askreddit', 'aww', 'books', 'earthporn', 'food',
 
 let API_URL = buildURL(DEFAULT_SUBS).concat("/hot.json?t=day&limit=" + DEFAULT_SUBS.length*10);
 
-buildAutocomplete();
-function buildAutocomplete() {
+$('#sublist').html(buildAutocompleteList(DEFAULT_SUBS));
+function buildAutocompleteList(optionList) {
 	let o = '';
-	for(let i = 0; i < DEFAULT_SUBS.length; i++) {
-		o += '<option value="' + DEFAULT_SUBS[i] + '" />';
+	for(let i = 0; i < optionList.length; i++) {
+		o += '<option value="' + optionList[i] + '" />';
 	}
-	$('#sublist').html(o);
+	return o;
 }
 
 var USABLE_POSTS = {};
