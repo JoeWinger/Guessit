@@ -50,7 +50,7 @@ function showNewPost() {
 	else $('#post-thumbnail').attr('src', '');
 	$('#post-author').text('/u/' + post.author);
 	$('#post-comments').text(post.num_comments + ' comments');
-	if(post.domain.startsWith('self.')) $('#post-link').text('self');
+	if(post.domain.startsWith('self.')) $('#post-link').text('self.reddit');
 	else $('#post-link').text(post.domain);
 	$('#points').text(points);
 	//console.log(post);
