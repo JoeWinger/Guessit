@@ -6,13 +6,6 @@ var DEFAULT_SUBS = ['art', 'askreddit', 'aww', 'books', 'earthporn', 'food',
 let API_URL = buildURL(DEFAULT_SUBS).concat("/hot.json?t=day&limit=" + DEFAULT_SUBS.length*10);
 
 $('#sublist').html(buildAutocompleteList(DEFAULT_SUBS));
-function buildAutocompleteList(optionList) {
-	let o = '';
-	for(let i = 0; i < optionList.length; i++) {
-		o += '<option value="' + optionList[i] + '" />';
-	}
-	return o;
-}
 
 var USABLE_POSTS = {};
 
@@ -21,12 +14,22 @@ var CURRENT_POST;
 var points = 0;
 var wrongs = 0;
 
+/*
+ * Utility Functions
+ */
 function buildURL(subList) {
 	let url = 'https://i.reddit.com/r/';
 	for(let i = 0; i < subList.length; i++) {
 		url = url.concat("+" + subList[i]);
 	}
 	return url;
+}
+function buildAutocompleteList(optionList) {
+	let o = '';
+	for(let i = 0; i < optionList.length; i++) {
+		o += '<option value="' + optionList[i] + '" />';
+	}
+	return o;
 }
 
 $.getJSON(API_URL, (res) => {
