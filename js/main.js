@@ -1,11 +1,11 @@
 var DEFAULT_SUBS = ['art', 'askreddit', 'aww', 'books', 'earthporn', 'food',
-				'funny', 'gadgets', 'gifs', 'history', 'internetisbeautiful',
-				'jokes', 'mildlyinteresting', 'news', 'oldschoolcool', 'photoshopbattles',
-				'pics', 'science', 'showerthoughts', 'space', 'sports', 'videos', 'worldnews'],
-				USABLE_POSTS = {}, CURRENT_POST, points = 0, wrongs = 0;
+	'funny', 'gadgets', 'gifs', 'history', 'internetisbeautiful',
+	'jokes', 'mildlyinteresting', 'news', 'oldschoolcool', 'photoshopbattles',
+	'pics', 'science', 'showerthoughts', 'space', 'sports', 'videos', 'worldnews'],
+	USABLE_POSTS = {}, CURRENT_POST, points = 0, wrongs = 0;
 
 
-let API_URL = buildURL(DEFAULT_SUBS).concat("/hot.json?t=day&limit=" + DEFAULT_SUBS.length*10);
+let API_URL = buildURL(DEFAULT_SUBS).concat("/hot.json?t=day&limit=" + DEFAULT_SUBS.length * 10);
 $('#sublist').html(buildAutocompleteList(DEFAULT_SUBS));
 //This codes run asyncronously in the background to grab data from Reddit
 $.getJSON(API_URL, (res) => {
@@ -22,7 +22,7 @@ function checkGuess(guess) {
 	let correctGuess = CURRENT_POST.subreddit.toLowerCase();
 	guess = guess.toLowerCase();
 
-	if(guess == correctGuess) {
+	if (guess == correctGuess) {
 		$('#guess').removeClass('incorrect').removeClass('correct').addClass('correct');
 		points++;
 		wrongs = 0;
@@ -31,7 +31,7 @@ function checkGuess(guess) {
 		$('#guess').removeClass('correct').removeClass('incorrect').addClass('incorrect');
 		points--;
 		wrongs++;
-		if(wrongs == 3) {
+		if (wrongs == 3) {
 			wrongs = 0;
 			showNewPost();
 		}
@@ -42,14 +42,14 @@ function checkGuess(guess) {
 }
 function buildURL(subList) {
 	let url = 'https://i.reddit.com/r/';
-	for(let i = 0; i < subList.length; i++) {
+	for (let i = 0; i < subList.length; i++) {
 		url = url.concat("+" + subList[i]);
 	}
 	return url;
 }
 function buildAutocompleteList(optionList) {
 	let o = '';
-	for(let i = 0; i < optionList.length; i++) {
+	for (let i = 0; i < optionList.length; i++) {
 		o += '<option value="' + optionList[i] + '" />';
 	}
 	return o;
