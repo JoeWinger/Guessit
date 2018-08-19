@@ -1,14 +1,18 @@
 <html>
+
 <head>
 	<title>Guuess</title>
 	<link rel='stylesheet' href='main.css'>
 	<script src='jquery.min.js'></script>
 </head>
+
 <body>
 	<div id='wrapper'>
-		<h1 style='margin-bottom: 0.5rem'>Guuess</h1>
+		<h1 style='margin-bottom: 0.5rem'>Guessit</h1>
 		<p style="margin-top: 0">Guess the subreddit!</p>
-		<br><br><br>
+		<br>
+		<br>
+		<br>
 		<div id='post'>
 			<img id='post-thumbnail' alt='Loading...' onerror='this.src="nothumb.png"'></img>
 			<span id='post-title'></span>
@@ -22,13 +26,17 @@
 		</div>
 		<div id="guess-area">
 			<input id='guess' type='text' list='sublist'>
-			<button id='btn-guess'>Guuess</button>
+			<button id='btn-guess'>Guess</button>
 		</div>
-		<br><br>
-		<div id='points-label'>Points: <span id='points'>0</span></div>
+		<br>
+		<br>
+		<div id='points-label'>Points:
+			<span id='points'>0</span>
+		</div>
 		<datalist id='sublist'></datalist>
 	</div>
 	<script src='main.js'></script>
-	
+
 </body>
+
 </html>
